@@ -1,0 +1,29 @@
+---
+version: "3"
+services:
+  influxdb:
+    image: influxdb:1.8-alpine
+    environment:
+      INFLUXDB_DB: influx
+    ports:
+      - 8086:8086
+    volumes:
+      - ./data/influxdb:/var/lib/influxdb
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana
+    user: "$UID:$GID"
+    env_file: .env
+    environment:
+      GF_PATHS_PROVISIONING: /etc/grafana/provisioning
+      GF_INSTALL_PLUGINS:
+    depends_on:
+      - influxdb
+    links:
+      - influxdb
+    ports:
+      - 3001:3000
+    volumes:
+      - ./data/grafana:/var/lib/grafana
+    restart: unless-stopped
