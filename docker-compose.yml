@@ -2,6 +2,7 @@
 version: "3"
 services:
   influxdb:
+    container_name: influxdb
     image: influxdb:latest
     env_file: .env
     ports:
@@ -12,6 +13,7 @@ services:
     restart: unless-stopped
 
   grafana:
+    container_name: grafana
     image: grafana/grafana
     user: "$UID:$GID"
     env_file: .env
