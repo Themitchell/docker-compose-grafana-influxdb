@@ -4,3 +4,5 @@ data/grafana/*
 !data/grafana/.gitkeep
 data/influxdb/*
 !data/influxdb/.gitkeep
+data/influxdb2/*
+!data/influxdb2/.gitkeep

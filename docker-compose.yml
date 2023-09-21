@@ -2,13 +2,13 @@
 version: "3"
 services:
   influxdb:
-    image: influxdb:1.8-alpine
-    environment:
-      INFLUXDB_DB: influx
+    image: influxdb:latest
+    env_file: .env
     ports:
       - 8086:8086
     volumes:
       - ./data/influxdb:/var/lib/influxdb
+      - ./data/influxdb2:/var/lib/influxdb2
     restart: unless-stopped
 
   grafana:
