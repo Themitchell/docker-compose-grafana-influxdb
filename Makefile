@@ -1,7 +1,7 @@
 REVISION=$(shell git rev-parse --verify --short HEAD)
 UID=$(shell id -u)
 GID=$(shell id -g)
-DOCKER_COMPOSE_CMD=env UID=${UID} GID=${GID} docker-compose
+DOCKER_COMPOSE_CMD=env UID=${UID} GID=${GID} docker compose
 
 build:
 	$(DOCKER_COMPOSE_CMD) build
